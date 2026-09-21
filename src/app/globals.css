@@ -1,0 +1,496 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+@custom-variant hc (&:is(.hc *));
+
+/* VPD Design System
+ * Primary: #00796B (teal) — actions
+ * Secondary: #562D58 (deep purple) — voice, links, focus
+ * Neutral, editorial, calm.
+ */
+
+@theme inline {
+  --font-sans: var(--font-inter), var(--font-ibm-plex), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-inter), var(--font-ibm-plex), ui-sans-serif, system-ui, sans-serif;
+  --font-arabic: var(--font-ibm-plex), var(--font-inter), sans-serif;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-soft: var(--primary-soft);
+  --color-primary-deep: var(--primary-deep);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary-soft: var(--secondary-soft);
+  --color-voice: var(--voice);
+  --color-voice-foreground: var(--voice-foreground);
+  --color-gold: var(--gold);
+  --color-gold-foreground: var(--gold-foreground);
+  --color-gold-soft: var(--gold-soft);
+  --color-cream: var(--cream);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+
+:root {
+  --radius: 1rem;
+
+  /* VPD Brand — Teal primary #0A8F97, Purple secondary #5D2F94 */
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.19 0.012 250);
+  --surface: oklch(0.975 0.006 200);
+  --surface-elevated: oklch(1 0 0);
+  --cream: oklch(0.975 0.006 200);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.19 0.012 250);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.19 0.012 250);
+
+  /* Teal #0A8F97 — action, accessibility, trust */
+  --primary: oklch(0.592 0.099 202);
+  --primary-foreground: oklch(0.99 0 0);
+  --primary-soft: oklch(0.955 0.028 202);
+  /* Darker teal for text on light backgrounds (AA contrast) */
+  --primary-deep: oklch(0.44 0.082 202);
+
+  /* Secondary mirrors the action colour for legacy usage */
+  --secondary: oklch(0.42 0.158 300);
+  --secondary-foreground: oklch(0.99 0 0);
+  --secondary-soft: oklch(0.955 0.03 300);
+
+  /* Voice = purple #5D2F94 — identity, advocacy, links */
+  --voice: oklch(0.42 0.158 300);
+  --voice-foreground: oklch(0.99 0 0);
+
+  /* Legacy accent token, aliased to the purple identity colour */
+  --gold: oklch(0.42 0.158 300);
+  --gold-foreground: oklch(0.99 0 0);
+  --gold-soft: oklch(0.955 0.03 300);
+
+  --muted: oklch(0.965 0.004 250);
+  --muted-foreground: oklch(0.46 0.014 250);
+  --accent: oklch(0.955 0.03 300);
+  --accent-foreground: oklch(0.42 0.158 300);
+
+  --destructive: oklch(0.55 0.2 27);
+  --destructive-foreground: oklch(0.99 0 0);
+  --success: oklch(0.55 0.13 155);
+  --success-foreground: oklch(0.99 0 0);
+  --warning: oklch(0.72 0.15 75);
+  --warning-foreground: oklch(0.2 0.03 75);
+
+  --border: oklch(0.91 0.006 250);
+  --border-strong: oklch(0.79 0.012 250);
+  --input: oklch(0.91 0.006 250);
+  --ring: oklch(0.42 0.158 300);
+
+  --font-scale: 1;
+  --shadow-soft: 0 1px 2px oklch(0.2 0.02 260 / 0.05), 0 8px 24px -12px oklch(0.2 0.02 260 / 0.1);
+  --shadow-lift: 0 2px 6px oklch(0.2 0.02 260 / 0.08), 0 24px 48px -20px oklch(0.2 0.02 260 / 0.18);
+}
+
+.dark {
+  --background: oklch(0.16 0.015 260);
+  --foreground: oklch(0.96 0.005 100);
+  --surface: oklch(0.19 0.018 260);
+  --surface-elevated: oklch(0.22 0.02 260);
+
+  --card: oklch(0.21 0.018 260);
+  --card-foreground: oklch(0.96 0.005 100);
+  --popover: oklch(0.21 0.018 260);
+  --popover-foreground: oklch(0.96 0.005 100);
+
+  --primary: oklch(0.75 0.1 202);
+  --primary-foreground: oklch(0.14 0.02 202);
+  --primary-soft: oklch(0.3 0.05 202);
+  --primary-deep: oklch(0.82 0.09 202);
+
+  --secondary: oklch(0.72 0.13 300);
+  --secondary-foreground: oklch(0.14 0.02 300);
+  --secondary-soft: oklch(0.3 0.06 300);
+  --voice: oklch(0.78 0.12 300);
+  --voice-foreground: oklch(0.14 0.02 300);
+  --gold: oklch(0.78 0.12 300);
+  --gold-foreground: oklch(0.14 0.02 300);
+  --gold-soft: oklch(0.3 0.06 300);
+  --cream: oklch(0.2 0.015 250);
+
+  --muted: oklch(0.24 0.015 250);
+  --muted-foreground: oklch(0.74 0.012 250);
+  --accent: oklch(0.3 0.06 300);
+  --accent-foreground: oklch(0.95 0.02 300);
+
+  --border: oklch(1 0 0 / 10%);
+  --border-strong: oklch(1 0 0 / 18%);
+  --input: oklch(1 0 0 / 12%);
+  --ring: oklch(0.78 0.12 300);
+}
+
+/* High contrast — layered on top of light or dark */
+.hc {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0 0 0);
+  --surface: oklch(1 0 0);
+  --surface-elevated: oklch(1 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0 0 0);
+  --muted: oklch(0.96 0 0);
+  --muted-foreground: oklch(0.15 0 0);
+  --border: oklch(0 0 0);
+  --border-strong: oklch(0 0 0);
+  --primary: oklch(0.3 0.08 165);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.3 0.08 165);
+  --secondary-foreground: oklch(1 0 0);
+  --voice: oklch(0.3 0.08 165);
+  --ring: oklch(0 0 0);
+}
+.dark.hc {
+  --background: oklch(0 0 0);
+  --foreground: oklch(1 0 0);
+  --surface: oklch(0 0 0);
+  --surface-elevated: oklch(0.1 0 0);
+  --card: oklch(0.08 0 0);
+  --card-foreground: oklch(1 0 0);
+  --muted: oklch(0.12 0 0);
+  --muted-foreground: oklch(0.95 0 0);
+  --border: oklch(1 0 0);
+  --border-strong: oklch(1 0 0);
+  --primary: oklch(0.85 0.12 180);
+  --primary-foreground: oklch(0 0 0);
+  --secondary: oklch(0.8 0.15 328);
+  --secondary-foreground: oklch(0 0 0);
+  --voice: oklch(0.85 0.15 328);
+  --ring: oklch(1 0 0);
+}
+
+/* Reading mode: narrow column, serif */
+.reading main {
+  max-width: 44rem;
+  margin-inline: auto;
+}
+.reading p,
+.reading li {
+  font-family: var(--font-serif);
+  font-size: 1.125rem;
+  line-height: 1.75;
+}
+
+/* Reduced motion global override */
+.reduce-motion *,
+.reduce-motion *::before,
+.reduce-motion *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+  scroll-behavior: auto !important;
+}
+
+/* Focus enhancement */
+.focus-enhance *:focus-visible {
+  outline: 3px solid var(--ring) !important;
+  outline-offset: 3px !important;
+  border-radius: 4px;
+}
+
+@layer base {
+  html {
+    font-size: calc(16px * var(--font-scale));
+    scrollbar-color: var(--voice) #e0e0e0;
+  }
+  * {
+    border-color: var(--color-border);
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  html[lang="ar"] body,
+  [dir="rtl"] body {
+    font-family: var(--font-arabic);
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-serif);
+    letter-spacing: -0.02em;
+    font-weight: 500;
+  }
+  html[lang="ar"] h1,
+  html[lang="ar"] h2,
+  html[lang="ar"] h3,
+  html[lang="ar"] h4,
+  [dir="rtl"] h1,
+  [dir="rtl"] h2,
+  [dir="rtl"] h3,
+  [dir="rtl"] h4 {
+    font-family: var(--font-arabic);
+  }
+  ::selection {
+    background: var(--voice);
+    color: var(--voice-foreground);
+  }
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  a {
+    color: var(--voice);
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #e0e0e0;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--voice);
+    border-radius: 6px;
+  }
+}
+
+@utility container-page {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  max-width: 80rem;
+  @media (min-width: 768px) {
+    padding-inline: 2rem;
+  }
+  @media (min-width: 1280px) {
+    padding-inline: 3rem;
+  }
+}
+
+@utility eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--voice);
+}
+
+@utility wave-divider {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 40' preserveAspectRatio='none'><path d='M0 20 Q 150 0 300 20 T 600 20 T 900 20 T 1200 20' fill='none' stroke='%235D2F94' stroke-opacity='0.5' stroke-width='1.2'/></svg>");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+/* Teal/purple overlay presets for imagery */
+@utility overlay-voice-3 {
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #0a8f97;
+    opacity: 0.05;
+    pointer-events: none;
+  }
+}
+@utility overlay-voice-8 {
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(10, 143, 151, 0.08) 0%, rgba(93, 47, 148, 0.38) 100%);
+    pointer-events: none;
+  }
+}
+
+/* Faint concentric "voice wave" backdrop */
+@utility wave-field {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 600' preserveAspectRatio='none'><g fill='none' stroke='%230A8F97' stroke-opacity='0.10' stroke-width='1.5'><path d='M-100 480 Q 200 340 500 480 T 1300 480'/><path d='M-100 400 Q 200 250 500 400 T 1300 400'/><path d='M-100 320 Q 200 160 500 320 T 1300 320'/></g></svg>");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom center;
+}
+
+/* Slow horizontal drift for decorative wave layers */
+@keyframes wave-drift {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+@utility wave-drift {
+  animation: wave-drift 28s linear infinite;
+}
+@utility wave-drift-slow {
+  animation: wave-drift 48s linear infinite;
+}
+
+/* ============================================================
+   VPD BRAND SYSTEM — logo-derived visual language
+   Teal #0A8F97 = action / access / trust
+   Purple #5D2F94 = voice / identity / advocacy
+   ============================================================ */
+
+:root {
+  /* The signature VPD transition: teal rising into purple */
+  --gradient-voice: linear-gradient(100deg, var(--primary) 0%, var(--voice) 100%);
+  --gradient-voice-soft: linear-gradient(
+    100deg,
+    color-mix(in oklab, var(--primary) 10%, transparent) 0%,
+    color-mix(in oklab, var(--voice) 10%, transparent) 100%
+  );
+  /* Arc radii — derived from the logo's terminals */
+  --arc-sm: 1.25rem;
+  --arc-md: 2rem;
+  --arc-lg: 3rem;
+  --arc-xl: 6rem;
+}
+
+/* 2px brand hairline: teal → purple. Used at the top of the page,
+   under the header, and above the footer. */
+@utility rule-voice {
+  height: 2px;
+  width: 100%;
+  background: var(--gradient-voice);
+}
+
+/* Heading accent: a short teal arc with a purple terminal dot,
+   the logo's core gesture reduced to its smallest form. */
+@utility arc-accent {
+  position: relative;
+  padding-block-start: 1.35rem;
+  &::before {
+    content: "";
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    width: 3.25rem;
+    height: 0.6rem;
+    background:
+      radial-gradient(circle at calc(100% - 0.3rem) 50%, var(--voice) 0 0.3rem, transparent 0.3rem),
+      linear-gradient(var(--primary), var(--primary)) 0 50% / 2.4rem 2px no-repeat;
+    background-repeat: no-repeat;
+  }
+}
+
+/* Image masks — one family, three sizes. Never invent new corner sets. */
+@utility arc-frame {
+  border-radius: var(--arc-xl) var(--arc-md) var(--arc-xl) var(--arc-md);
+  overflow: hidden;
+}
+@utility arc-frame-alt {
+  border-radius: var(--arc-md) var(--arc-xl) var(--arc-md) var(--arc-xl);
+  overflow: hidden;
+}
+@utility arc-frame-soft {
+  border-radius: var(--arc-lg);
+  overflow: hidden;
+}
+
+/* Section band with a single arced edge — the rhythm device between
+   neutral and coloured sections. */
+@utility band-arc-top {
+  border-start-start-radius: var(--arc-lg);
+  border-start-end-radius: var(--arc-lg);
+  @media (min-width: 768px) {
+    border-start-start-radius: var(--arc-lg);
+    border-start-end-radius: var(--arc-lg);
+  }
+}
+@utility band-arc-bottom {
+  border-end-start-radius: var(--arc-lg);
+  border-end-end-radius: var(--arc-lg);
+  @media (min-width: 768px) {
+    border-end-start-radius: var(--arc-lg);
+    border-end-end-radius: var(--arc-lg);
+  }
+}
+
+/* Faint concentric arc field — the logo's waves radiating, used at
+   very low opacity behind hero and footer only. */
+@utility arc-field {
+  background-image:
+    radial-gradient(
+      closest-side circle at 12% 118%,
+      transparent 0 62%,
+      color-mix(in oklab, var(--primary) 22%, transparent) 62% 62.6%,
+      transparent 63%
+    ),
+    radial-gradient(
+      closest-side circle at 12% 118%,
+      transparent 0 78%,
+      color-mix(in oklab, var(--voice) 20%, transparent) 78% 78.5%,
+      transparent 79%
+    ),
+    radial-gradient(
+      closest-side circle at 12% 118%,
+      transparent 0 94%,
+      color-mix(in oklab, var(--primary) 14%, transparent) 94% 94.4%,
+      transparent 95%
+    );
+  background-repeat: no-repeat;
+  background-size: 140% 140%;
+  background-position: bottom left;
+}
+
+/* Nav / inline link: a teal arc grows under the label on hover,
+   purple when active. */
+@utility arc-underline {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0.9rem;
+    inset-block-end: 0.35rem;
+    height: 2px;
+    border-radius: 2px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  &:hover::after,
+  &[data-active="true"]::after {
+    transform: scaleX(1);
+  }
+}
+
+/* Centered variant of the heading accent. */
+@utility arc-accent-center {
+  &::before {
+    inset-inline: 0;
+    margin-inline: auto;
+  }
+}
