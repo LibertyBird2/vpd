@@ -39,7 +39,7 @@ export function getSite(locale: string) {
 }
 
 export function getNavigation(locale: string) {
-  return getPageData(locale).navigation;
+  return getPageData(locale).ui.navigation;
 }
 
 export function getGetInvolvedPage(locale: string) {

@@ -19,5 +19,4 @@ export const ar: SiteContent = {
   voices,
   insights,
   getInvolved,
-  navigation: [],
 };

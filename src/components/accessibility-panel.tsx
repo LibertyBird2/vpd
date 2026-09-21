@@ -84,6 +84,7 @@ function usePrefs(): [Prefs, (p: Prefs) => void] {
       media.removeEventListener("change", on);
       listeners.delete(l);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return [state, setPrefs];

@@ -22,11 +22,9 @@ export const about: AboutContent = {
     items: [
       { label: "من نحن", href: "#who" },
       { label: "قصتنا", href: "#story" },
-      { label: "الغاية الاستراتيجية", href: "#purpose" },
       { label: "الرؤية", href: "#vision" },
       { label: "الرسالة", href: "#mission" },
       { label: "القيم", href: "#values" },
-      { label: "المبادئ المؤسسية", href: "#principles" },
       { label: "الإطار الاستراتيجي", href: "#strategy" },
       { label: "مجالات العمل", href: "#areas" },
       { label: "الحوكمة", href: "#governance" },

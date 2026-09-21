@@ -23,11 +23,9 @@ export const about: AboutContent = {
     items: [
       { label: "Who We Are", href: "#who" },
       { label: "Our Story", href: "#story" },
-      { label: "Strategic Purpose", href: "#purpose" },
       { label: "Vision", href: "#vision" },
       { label: "Mission", href: "#mission" },
       { label: "Values", href: "#values" },
-      { label: "Institutional Principles", href: "#principles" },
       { label: "Strategic Framework", href: "#strategy" },
       { label: "Areas of Work", href: "#areas" },
       { label: "Governance", href: "#governance" },
@@ -91,12 +89,12 @@ export const about: AboutContent = {
     ],
   },
 
-  purpose: {
-    id: "purpose",
-    title: "Strategic Purpose",
-    body:
-      "VPD seeks to build a trusted institutional reference, led by persons with disabilities, that represents their priorities and rights, advances the integration of a disability perspective into policies, plans, services, and programs, develops practical knowledge, tools, and standards that support accessibility and participation, and contributes to strengthening the institutional and civic environment that supports the rights and inclusion of persons with disabilities in Yemen.",
-  },
+  // purpose: {
+  //   id: "purpose",
+  //   title: "Strategic Purpose",
+  //   body:
+  //     "VPD seeks to build a trusted institutional reference, led by persons with disabilities, that represents their priorities and rights, advances the integration of a disability perspective into policies, plans, services, and programs, develops practical knowledge, tools, and standards that support accessibility and participation, and contributes to strengthening the institutional and civic environment that supports the rights and inclusion of persons with disabilities in Yemen.",
+  // },
 
   vision: {
     id: "vision",
@@ -159,52 +157,52 @@ export const about: AboutContent = {
     ],
   },
 
-  principles: {
-    eyebrow: "Institutional Principles",
-    title: "The principles that guide our decisions.",
-    items: [
-      {
-        title: "Participation, Not Representation by Proxy",
-        body:
-          "We work with and under the leadership of persons with disabilities, rather than simply working on their behalf or for them.",
-      },
-      {
-        title: "Rights Before Care",
-        body:
-          "We start from rights, citizenship, and participation, not charity or charitable intervention.",
-      },
-      {
-        title: "Impact Before Service Expansion",
-        body:
-          "We focus on influencing policies, practices, standards, and the institutional environment.",
-      },
-      {
-        title: "Knowledge as the Foundation of Influence",
-        body:
-          "We build our positions, advocacy, and partnerships on evidence, analysis, and local knowledge.",
-      },
-      {
-        title: "Inclusion Is a Shared Responsibility",
-        body:
-          "We work with institutions and stakeholders to strengthen their responsibility for including persons with disabilities.",
-      },
-      {
-        title: "Limited Targeted Intervention as a Strategic Tool",
-        body:
-          "We use limited practical models to demonstrate solutions and develop practices that can be adopted and scaled.",
-      },
-      {
-        title: "Partnership Is Essential for Impact",
-        body:
-          "We work within a broader ecosystem and do not seek to replace existing actors or duplicate their roles.",
-      },
-      {
-        title: "Institutional Focus and Discipline",
-        body:
-          "We maintain clarity around our scope and priorities and avoid uncontrolled expansion.",
-      },
-    ],
-  },
+  // principles: {
+  //   eyebrow: "Institutional Principles",
+  //   title: "The principles that guide our decisions.",
+  //   items: [
+  //     {
+  //       title: "Participation, Not Representation by Proxy",
+  //       body:
+  //         "We work with and under the leadership of persons with disabilities, rather than simply working on their behalf or for them.",
+  //     },
+  //     {
+  //       title: "Rights Before Care",
+  //       body:
+  //         "We start from rights, citizenship, and participation, not charity or charitable intervention.",
+  //     },
+  //     {
+  //       title: "Impact Before Service Expansion",
+  //       body:
+  //         "We focus on influencing policies, practices, standards, and the institutional environment.",
+  //     },
+  //     {
+  //       title: "Knowledge as the Foundation of Influence",
+  //       body:
+  //         "We build our positions, advocacy, and partnerships on evidence, analysis, and local knowledge.",
+  //     },
+  //     {
+  //       title: "Inclusion Is a Shared Responsibility",
+  //       body:
+  //         "We work with institutions and stakeholders to strengthen their responsibility for including persons with disabilities.",
+  //     },
+  //     {
+  //       title: "Limited Targeted Intervention as a Strategic Tool",
+  //       body:
+  //         "We use limited practical models to demonstrate solutions and develop practices that can be adopted and scaled.",
+  //     },
+  //     {
+  //       title: "Partnership Is Essential for Impact",
+  //       body:
+  //         "We work within a broader ecosystem and do not seek to replace existing actors or duplicate their roles.",
+  //     },
+  //     {
+  //       title: "Institutional Focus and Discipline",
+  //       body:
+  //         "We maintain clarity around our scope and priorities and avoid uncontrolled expansion.",
+  //     },
+  //   ],
+  // },
 
   strategy: {
     eyebrow: "Strategic Framework",

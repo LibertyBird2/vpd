@@ -52,7 +52,7 @@ export const getInvolved: GetInvolvedContent = {
 
     {
       key: "contribute",
-      icon: "lightbulb",
+      icon: "bookOpen",
       title: "Contribute Knowledge or Resources",
       body:
         "Your contribution could take the form of research, technical advice, tools, in-kind resources, or unrestricted financial support that helps VPD build a sustainable institutional foundation.",

@@ -11,7 +11,6 @@ import { getInvolved } from "./get-involved";
 
 export const en: SiteContent = {
   site,
-  navigation: [],
   ui,
   home,
   about,
