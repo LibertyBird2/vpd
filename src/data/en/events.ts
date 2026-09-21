@@ -31,6 +31,14 @@ const past: EventItem[] = [
   //   summary:
   //     "A gathering that brought together contributors from the community initiatives and experiences that helped shape the idea of establishing VPD.",
   // },
+  {
+    slug: "deaf-blind-international-day",
+    title: "Deafblind International Awareness Day",
+    date: "2026-06-27",
+    location: "Online",
+    format: "Community Gathering",
+    summary: "The first observance of Deafblind International Awareness Day in Yemen.",
+  },
 ];
 
 export const events: EventsContent = {

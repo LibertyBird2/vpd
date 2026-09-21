@@ -9,8 +9,8 @@ type Props = {
   params: Promise<{ locale: string; slug: string }>;
 };
 
-export async function generateStaticParams({ params }: { params: Promise<{ locale: string }> }) {
-  const { locale } = await params;
+export async function generateStaticParams({ params }: { params: { locale: string } }) {
+  const { locale } = params;
   const insights = getInsights(locale);
   return insights.items.map((e: Insight) => ({
     slug: e.slug,

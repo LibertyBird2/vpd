@@ -42,37 +42,37 @@ export const projects: ProjectsContent = {
     items: [
       {
         slug: "autism-children-exhibition-2021",
-        origin: "مبادرة ريادة شباب",
-        partner: "المنظمة المتحدة للتنمية المستدامة",
-        funder: "المنظمة المتحدة للتنمية المستدامة",
-        title: "أطفال التوحد منا وفينا — المعرض الفني الأول",
+        origin: "Youth Leadership Initiative",
+        partner: "United Organization for Sustainable Development",
+        funder: "United Organization for Sustainable Development",
+        title: "Autism Children Are Among Us — First Art Exhibition for Children with Autism in Taiz",
         period: "2021 — 2022",
         image: "/images/projects/autism.webp",
-        alt: "أطفال من ذوي التوحد يرسمون تحت إشراف إحدى المدربات في المركز",
+        alt: "Children with autism painting under the supervision of one of the trainers in the center",
         summary:
-          "مبادرة مجتمعية هدفت إلى تعزيز مشاركة الأطفال ذوي التوحد وإبراز قدراتهم من خلال أنشطة فنية ومساحات للتعبير، بالتوازي مع دعم الأطفال ذوي التوحد في تعز.",
-        reach: "30+ طفلاً مشاركاً · أول معرض فني لأطفال التوحد في تعز · تغطية إعلامية",
-        status: "مكتمل · عمل مجتمعي سابق",
+          "A community initiative aimed at enhancing the participation of children with autism and highlighting their abilities through art activities and spaces for expression, in parallel with supporting children with autism in Taiz.",
+        reach: "30+ children participated · First art exhibition for children with autism in Taiz · Media coverage",
+        status: "Completed · Previous community work",
 
         sections: [
           {
-            title: "الخلفية",
-            body: "جاءت المبادرة استجابة للحاجة إلى مساحات أكثر انفتاحاً تسمح للأطفال ذوي التوحد بالتعبير والمشاركة، وتساعد على تغيير التصورات المجتمعية التي تختزل الإعاقة في العجز أو الرعاية.",
+            title: "Background",
+            body: "The initiative came in response to the need for more open spaces that allow children with autism to express and participate, and help change societal perceptions that reduce disability to inability or care.",
           },
           {
-            title: "ما تم تنفيذه",
-            body: "شملت الأنشطة ورشاً فنية تفاعلية شارك فيها الأطفال ورسّامون متطوعون، إلى جانب دعم مركز الأمل للتوحد بوسائل وأنشطة مساندة. وتوجت المبادرة بإقامة أول معرض فني لأطفال التوحد في تعز في نوفمبر 2021.",
+            title: "What was implemented",
+            body: "The activities included interactive art workshops in which children and volunteer artists participated, in addition to supporting the Al-Amal Center for Autism with means and supporting activities. The initiative culminated in the holding of the first art exhibition for children with autism in Taiz in November 2021.",
           },
           {
-            title: "ما الذي تعلمناه",
-            body: "أظهرت التجربة أن توفير مساحة للمشاركة والتعبير يمكن أن يسهم في تغيير الصورة النمطية حول الإعاقة، وأن العمل مع الجهات المتخصصة والأسر والمجتمع المحلي يزيد من قدرة المبادرات على الوصول إلى الفئات المعنية.",
+            title: "What we learned",
+            body: "The experiment showed that providing a space for participation and expression can contribute to changing the stereotype about disability, and that working with specialized bodies, families, and the local community increases the ability of initiatives to reach the concerned groups.",
           },
         ],
 
         lessons: [
-          "المشاركة والتعبير يمكن أن يكونا مدخلاً عملياً لتغيير التصورات المجتمعية حول الإعاقة.",
-          "الأشخاص ذوو الإعاقة ليسوا مجرد متلقين للدعم، بل أصحاب قدرات وحق في المشاركة والتعبير.",
-          "الشراكة مع الجهات المتخصصة والمجتمع المحلي تعزز جودة التدخل ووصوله.",
+          "Participation and expression can be a practical entry point for changing societal perceptions of disability.",
+          "People with disabilities are not just recipients of support, but owners of abilities and the right to participate and express.",
+          "Partnership with specialized bodies and the local community enhances the quality and reach of the intervention.",
         ],
 
         video: "https://www.youtube.com/embed/DJ3CVvkEHf4?si=tRmvpl-wnkl54nvc",
@@ -80,74 +80,74 @@ export const projects: ProjectsContent = {
 
       {
         slug: "climate-action-youth-rights-2023",
-        origin: "مبادرة سفراء الأمل",
-        partner: "مكتب الصحة العامة والسكان بتعز",
-        funder: "مكتب الصحة العامة والسكان بتعز",
-        title: "العمل المناخي الشامل ولغة الحقوق",
+        origin: "Hope Ambassadors Initiative",
+        partner: "Public Health and Population Office in Taiz",
+        funder: "Public Health and Population Office in Taiz",
+        title: "Climate Action and the Language of Rights",
         period: "2023 — 2024",
         image: "/images/projects/climate.jpg",
-        alt: "ملصق توعوي حول العمل المناخي والحقوق",
+        alt: "A poster raising awareness about climate action and rights",
         summary:
-          "حملات توعوية رقمية ومجتمعية تناولت العلاقة بين التغير المناخي وحقوق الأشخاص ذوي الإعاقة، مع التركيز على أهمية إدماج الفئات الأكثر تأثراً في الاستجابة للكوارث والسياسات البيئية.",
-        reach: "42 مادة رقمية · 6 منصات · 1.8 مليون وصول",
-        status: "مكتمل · عمل مجتمعي سابق",
+          "Digital and community awareness campaigns addressed the relationship between climate change and the rights of persons with disabilities, emphasizing the importance of including the most affected groups in disaster response and environmental policies.",
+        reach: "42 digital materials · 6 platforms · 1.8 million views",
+        status: "Completed · Previous community work",
 
         sections: [
           {
-            title: "الخلفية",
-            body: "تنطلق المبادرة من حقيقة أن آثار الأزمات المناخية والكوارث لا توزع بالتساوي، وأن الأشخاص ذوي الإعاقة قد يواجهون عوائق إضافية في الوصول إلى المعلومات والخدمات والاستجابة للطوارئ.",
+            title: "Background",
+            body: "The initiative stems from the reality that the impacts of climate crises and disasters are not distributed equally, and that persons with disabilities may face additional barriers in accessing information, services, and emergency response.",
           },
           {
-            title: "المنهجية",
-            body: "استخدمت المبادرة المحتوى الرقمي والتوعية المجتمعية لربط العمل المناخي بلغة الحقوق والإدماج، والدفع نحو النظر إلى الأشخاص ذوي الإعاقة بوصفهم مشاركين وأصحاب حقوق في عمليات الاستجابة والتخطيط.",
+            title: "Methodology",
+            body: "The initiative used digital content and community awareness to link climate action with the language of rights and inclusion, pushing for persons with disabilities to be viewed as participants and rights holders in response and planning processes.",
           },
           {
-            title: "ما الذي تعلمناه",
-            body: "أظهرت التجربة أهمية إدماج الإعاقة في القضايا الأوسع بدلاً من التعامل معها كموضوع منفصل، وأهمية استخدام المعرفة والمحتوى العام لتوسيع النقاش حول الإدماج.",
+            title: "What we learned",
+            body: "The experiment showed the importance of integrating disability into broader issues instead of treating it as a separate topic, and the importance of using knowledge and general content to expand the discussion about inclusion.",
           },
         ],
 
         lessons: [
-          "الإعاقة يجب أن تكون جزءاً من التخطيط المناخي والاستجابة للكوارث، لا قضية منفصلة عنهما.",
-          "الوصول إلى المعلومات عنصر أساسي من عناصر الإدماج والمشاركة.",
-          "التوعية تصبح أكثر تأثيراً عندما تربط قضايا الإعاقة بالقضايا العامة والسياسات المجتمعية.",
+          "Disability must be part of climate planning and disaster response, not a separate issue.",
+          "Access to information is a fundamental element of inclusion and participation.",
+          "Awareness becomes more effective when it links disability issues with general issues and societal policies.",
         ],
       },
 
       {
         slug: "community-resilience-field-workshops-2022",
-        origin: "مبادرة سفراء الأمل",
-        partner: "مكتب الصحة العامة والسكان بتعز",
-        funder: "مكتب الصحة العامة والسكان بتعز",
-        title: "ورش التخطيط التشاركي وتحديد أولويات الإدماج",
+        origin: "Hope Ambassadors Initiative",
+        partner: "Public Health and Population Office in Taiz",
+        funder: "Public Health and Population Office in Taiz",
+        title: "Participatory Planning Workshops and Identifying Inclusion Priorities",
         period: "2022 — 2024",
         image: "workshop",
-        alt: "مشاركون في جلسة تخطيط تشاركي حول قضايا الإدماج وإمكانية الوصول",
+        alt: "Participants in a participatory planning session on inclusion and accessibility issues",
         summary:
-          "سلسلة من ورش العمل والجلسات التشاركية في مديريات من محافظة تعز هدفت إلى الاستماع إلى تجارب الأشخاص ذوي الإعاقة وتحديد العوائق والأولويات المرتبطة بالإدماج وإمكانية الوصول.",
-        reach: "9 ورش ميدانية · 4 مديريات · 260+ مشاركاً",
-        status: "مكتمل · عمل مجتمعي سابق",
+          "A series of workshops and participatory sessions in districts of Taiz Governorate aimed at listening to the experiences of persons with disabilities and identifying barriers and priorities related to inclusion and accessibility.",
+        reach: "9 field workshops · 4 districts · 260+ participants",
+        status: "Completed · Previous community work",
 
         sections: [
           {
-            title: "الخلفية",
-            body: "انطلقت الورش من الحاجة إلى فهم العوائق التي يواجهها الأشخاص ذوو الإعاقة في سياقهم المحلي، بدلاً من بناء الاستجابات اعتماداً على افتراضات خارج المجتمع.",
+            title: "Background",
+            body: "The workshops stemmed from the need to understand the barriers faced by persons with disabilities in their local context, rather than building responses based on assumptions external to the community.",
           },
           {
-            title: "المنهجية",
-            body: "اعتمد العمل على جلسات حوار وتخطيط تشاركي ومسح ميداني في مديريات المظفر والقاهرة وصالة وصبر الموادم، مع إتاحة مساحة للأشخاص ذوي الإعاقة للمساهمة في تحديد الأولويات وصياغة الاحتياجات.",
+            title: "Methodology",
+            body: "The work relied on dialogue sessions, participatory planning, and field surveys in Al-Mudhaffer, Al-Qahera, Sala, and Sabr Al-Mawadim districts, providing space for persons with disabilities to contribute to identifying priorities and formulating needs.",
           },
           {
-            title: "ما الذي تعلمناه",
-            body: "أكدت التجربة أن الخبرة المعاشة والمعرفة المحلية عنصران أساسيان لفهم العوائق وتصميم تدخلات أكثر واقعية، وأن المشاركة ينبغي أن تبدأ من مرحلة تحديد المشكلة لا بعد تصميم الحل.",
+            title: "What we learned",
+            body: "The experiment confirmed that lived experience and local knowledge are fundamental elements for understanding barriers and designing more realistic interventions, and that participation should begin at the problem identification stage, not after designing the solution.",
           },
         ],
 
         lessons: [
-          "الخبرة المعاشة مصدر أساسي للمعرفة عند تحديد عوائق الإدماج.",
-          "المشاركة الفعلية يجب أن تبدأ من تحديد المشكلة والأولوية، لا عند تنفيذ الحل فقط.",
-          "الحلول المحلية تصبح أكثر واقعية عندما تُبنى مع الأشخاص المتأثرين بها.",
-          "التدخلات الصغيرة والمركزة يمكن أن تنتج معرفة عملية قابلة للتطوير.",
+          "Lived experience is a primary source of knowledge when identifying inclusion barriers.",
+          "Actual participation should begin at the problem and priority identification stage, not only when implementing the solution.",
+          "Local solutions become more realistic when built with the people affected by them.",
+          "Small, focused interventions can produce practical knowledge that is scalable.",
         ],
       },
     ],

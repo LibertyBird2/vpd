@@ -14,8 +14,8 @@ type Props = {
   params: Promise<{ locale: string; slug: string }>;
 };
 
-export async function generateStaticParams({ params }: { params: Promise<{ locale: string }> }) {
-  const { locale } = await params;
+export async function generateStaticParams({ params }: { params: { locale: string } }) {
+  const { locale } = params;
   const projects = getProjects(locale);
   return projects.initiatives.items.map((p: InitiativeProject) => ({
     slug: p.slug,
