@@ -1,7 +1,7 @@
 /**
  * Shared, cross-page components barrel.
  *
- *   import { WaveMark, AccessibilityPanel } from "@/components/shared";
+ *   import { AccessibilityTrigger } from "@/components/shared";
  */
 
 export { AccessibilityTrigger } from "@/components/accessibility-panel";
