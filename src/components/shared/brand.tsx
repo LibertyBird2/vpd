@@ -146,7 +146,7 @@ export function ArcFigure({
           priority={eager}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          className="object-fit transition-transform duration-700 ease-out"
+          className="object-cover transition-transform duration-700 ease-out"
         />
         {caption && <figcaption className="sr-only">{caption}</figcaption>}
       </figure>

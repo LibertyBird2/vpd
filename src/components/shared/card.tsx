@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArcFigure } from "./brand";
 import { ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
-import type { Voice, InitiativeProject, Insight } from "@/data/types";
+import type { Voice, InitiativeProject, Insight } from "@/types";
 import type { StaticImageData } from "next/image";
 
 export interface CardProps {
@@ -62,15 +62,33 @@ export interface VoiceCardProps {
 
 export function VoiceCard({ voice, className }: VoiceCardProps) {
   return (
-    <Card className={className}>
-      <CardImage image={voice.image} />
+    <Card className={cn("overflow-hidden group flex flex-col h-full", className)}>
+      {!!voice.image && (
+        <div className="relative overflow-hidden rounded-t-3xl bg-secondary-soft">
+          <ArcFigure 
+            src={voice.image} 
+            alt={voice.author} 
+            ratio="4/3" 
+            className="w-full transition-transform duration-700 ease-out group-hover:scale-105" 
+            variant="soft" 
+          />
+        </div>
+      )}
       <CardContent>
-        <CardEyebrow>
-          {voice.author} — {voice.role}
-        </CardEyebrow>
-        <CardTitle>&quot;{voice.title}&quot;</CardTitle>
-        <p className="mt-3 flex-1 text-sm text-muted-foreground">{voice.excerpt}</p>
-        <p className="mt-6 text-xs text-muted-foreground">{voice.readingTime}</p>
+        <div className="flex flex-col gap-1 mb-6 pb-5 border-b border-border/50">
+          <h2 className="font-semibold text-lg text-foreground">{voice.author}</h2>
+          <span className="text-xs uppercase tracking-widest text-muted-foreground">{voice.role}</span>
+        </div>
+        <blockquote className="font-semibold text-xl leading-snug text-foreground group-hover:text-voice transition-colors mb-4">
+          &quot;{voice.title}&quot;
+        </blockquote>
+        <p className="flex-1 text-sm leading-relaxed text-muted-foreground">{voice.excerpt}</p>
+        
+        {!!voice.readingTime && (
+          <p className="mt-8 text-xs font-medium uppercase tracking-widest text-muted-foreground group-hover:text-primary transition-colors">
+            {voice.readingTime}
+          </p>
+        )}
       </CardContent>
     </Card>
   );
@@ -103,24 +121,30 @@ export function ProjectCard({ project, locale, className }: ProjectCardProps) {
 export interface InsightCardProps {
   insight: Insight;
   locale: string;
+  readLabel?: string;
   className?: string;
 }
 
-export function InsightCard({ insight, locale, className }: InsightCardProps) {
+export function InsightCard({ insight, locale, readLabel, className }: InsightCardProps) {
   return (
-    <Card asLink href={`/${locale}/insights/${insight.slug}`} className={className}>
-      <CardImage image={insight.image} />
-      <div className="flex items-center gap-3 text-xs p-6 pb-0">
-        <span className="rounded-full bg-secondary-soft px-2.5 py-1 font-medium text-voice">
+    <Card asLink href={`/${locale}/insights/${insight.slug}`} className={cn("p-6 sm:p-8", className)}>
+      {!!insight.image && <CardImage image={insight.image} />}
+      <div className="flex flex-wrap items-center gap-3 text-xs mb-4">
+        <span className="rounded-full bg-secondary-soft px-3 py-1 font-semibold text-voice uppercase tracking-widest">
           {insight.kind}
         </span>
-        <span className="text-muted-foreground">{insight.read}</span>
+        {!!insight.read && <span className="text-muted-foreground uppercase tracking-widest">{insight.read}</span>}
       </div>
-      <CardContent>
-        <CardTitle>{insight.title}</CardTitle>
-        <p className="mt-3 text-sm text-muted-foreground">{insight.date}</p>
-        <p className="mt-4 flex-1 text-sm leading-relaxed text-foreground/85">{insight.excerpt}</p>
-      </CardContent>
+      <h3 className="font-semibold text-2xl leading-snug text-foreground group-hover:text-voice transition-colors">{insight.title}</h3>
+      {!!insight.date && <p className="mt-2 text-sm text-muted-foreground">{insight.date}</p>}
+      <p className="mt-4 text-base leading-relaxed text-muted-foreground flex-1">{insight.excerpt}</p>
+      
+      {!!readLabel && (
+        <div className="mt-8 flex items-center text-sm font-semibold text-voice group-hover:text-primary-deep transition-colors">
+          {readLabel}
+          <ArrowUpRight className="ml-1.5 h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 rtl:mr-1.5 rtl:-scale-x-100 rtl:group-hover:-translate-x-0.5" />
+        </div>
+      )}
     </Card>
   );
 }

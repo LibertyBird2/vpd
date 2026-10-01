@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useContent } from "@/hooks/use-content";
-import type { CtaLink } from "@/data/types";
+import type { CtaLink } from "@/types";
 import { BrandRule } from "./shared/brand";
 import { BrandLogo } from "./brand-logo";
 import { getLocalizedHref } from "@/lib/utils";
@@ -25,7 +25,7 @@ export function SiteFooter({ locale }: { locale?: string }) {
             <p className="mt-4 text-xs text-voice-foreground/60">{site.stage}</p>
           </div>
 
-          {ui.footer.columns.map((col) => (
+          {ui.footer.columns.map((col: { title: string; links: CtaLink[] }) => (
             <FooterCol key={col.title} title={col.title} links={col.links} locale={locale} />
           ))}
         </div>
@@ -35,7 +35,12 @@ export function SiteFooter({ locale }: { locale?: string }) {
           <p className="flex flex-wrap gap-x-6 gap-y-1">
             <span>{site.cities}</span>
             <span>{site.email}</span>
-            <span>{ui.footer.accessibilityStatement}</span>
+            <Link 
+              href={`/${locale}/accessibility`}
+              className="hover:text-voice-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-voice-foreground rounded"
+            >
+              {ui.footer.accessibilityStatement}
+            </Link>
           </p>
         </div>
       </div>
@@ -45,22 +50,22 @@ export function SiteFooter({ locale }: { locale?: string }) {
 
 function FooterCol({ title, links, locale }: { title: string; links: CtaLink[]; locale?: string }) {
   return (
-    <div>
-      <p className="text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-voice-foreground/60">
+    <nav aria-label={title}>
+      <h2 className="text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-voice-foreground/60">
         {title}
-      </p>
+      </h2>
       <ul className="mt-4 space-y-2.5 text-sm">
         {links.map((l, i) => (
           <li key={`${l.href}-${i}`}>
             <Link
               href={getLocalizedHref(locale, l.href)}
-              className="inline-block border-b border-transparent text-voice-foreground/90 no-underline transition-colors hover:border-current hover:text-voice-foreground"
+              className="inline-block border-b border-transparent text-voice-foreground/90 no-underline transition-colors hover:border-current hover:text-voice-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-voice-foreground rounded-sm"
             >
               {l.label}
             </Link>
           </li>
         ))}
       </ul>
-    </div>
+    </nav>
   );
 }

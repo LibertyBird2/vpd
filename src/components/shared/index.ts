@@ -4,7 +4,7 @@
  *   import { AccessibilityTrigger } from "@/components/shared";
  */
 
-export { AccessibilityTrigger } from "@/components/accessibility-panel";
+export { AccessibilityToggle as AccessibilityTrigger } from "@/components/accessibility";
 export { PillLink, PillButton, pillClass } from "./pill";
 export { Reveal } from "./reveal";
 export type { PillVariant, PillSize } from "./pill";

@@ -1,11 +1,11 @@
 import { MetadataRoute } from "next";
-import { getProjects, getEvents } from "@/repositories/dataAccess";
+import { getProjects, getEvents } from "@/lib/repositories";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const BASE_URL = "https://v4d.org"; // Ensure this matches actual prod URL
+  const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
   const locales = ["en", "ar"];
 
-  const paths = ["", "/about", "/projects", "/events", "/voices", "/insights", "/get-involved"];
+  const paths = ["", "/about", "/projects", "/events", "/voices", "/insights", "/get-involved", "/accessibility"];
 
   // Projects and Events slug generation from English data
   const projects = getProjects("en");

@@ -20,16 +20,19 @@ export function PageHeader({
   title,
   lede,
   children,
+  breadcrumbs,
 }: {
   eyebrow?: string;
   title: string;
   lede?: string;
   children?: ReactNode;
+  breadcrumbs?: ReactNode;
 }) {
   return (
     <section className="relative overflow-hidden band-arc-bottom arc-field border-b border-border bg-primary-soft">
       <div className="container-page py-16 md:py-24">
         <Reveal direction="up" className="arc-accent">
+          {breadcrumbs && <div className="mb-6">{breadcrumbs}</div>}
           {eyebrow && (
             <p className="text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-voice">
               {eyebrow}

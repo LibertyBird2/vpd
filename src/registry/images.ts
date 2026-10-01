@@ -4,7 +4,7 @@ import participation from "@/assets/participation.jpg";
 import workshop from "@/assets/workshop.jpg";
 import accessibilityTech from "@/assets/accessibility-tech.jpg";
 
-import type { ImageName } from "@/data/types";
+import type { ImageName } from "@/types";
 import type { StaticImageData } from "next/image";
 
 /**

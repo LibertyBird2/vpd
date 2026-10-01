@@ -1,11 +1,12 @@
 import React from "react";
 import { SiteLayout, PageHeader, Section } from "@/components/site-layout";
 import { PillButton, PillLink, Reveal } from "@/components/shared";
-import { getGetInvolvedPage, getSite } from "@/repositories/dataAccess";
-import { Mail, MapPin } from "lucide-react";
+import { getGetInvolvedPage, getSite } from "@/lib/repositories";
+import { Mail, MapPin, ChevronDown } from "lucide-react";
 import { ArcFigure } from "@/components/shared";
 import { getImage, getIcon } from "@/registry";
-import type { WayToHelp } from "@/data/types";
+import { cn } from "@/lib/utils";
+import type { WayToHelp } from "@/types";
 import { Metadata } from "next";
 
 type Props = {
@@ -38,10 +39,10 @@ export default async function GetInvolved({ params }: Props) {
       <PageHeader eyebrow={data.header.eyebrow} title={data.header.title} lede={data.header.lede} />
 
       <Section>
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
           {data.ways.map((w: WayToHelp, i: number) => (
-            <Reveal key={w.key} direction="up" delay={i * 90}>
-              <Card
+            <Reveal key={w.key} direction="up" delay={i * 90} className="h-full">
+              <EngagementCard
                 icon={getIcon(w.icon)}
                 title={w.title}
                 body={w.body}
@@ -53,25 +54,29 @@ export default async function GetInvolved({ params }: Props) {
         </div>
       </Section>
 
-      <Section bg="surface" eyebrow={data.contact.eyebrow} title={data.contact.title}>
+      <Section id="contact" bg="surface" eyebrow={data.contact.eyebrow} title={data.contact.title}>
         <div className="grid gap-10 rounded-3xl border border-border bg-background p-8 md:p-12 lg:grid-cols-[1.2fr_1fr]">
           <Reveal direction="right">
-            <form className="grid gap-5">
-              <Field label={data.contact.form.name}>
+            <form className="grid gap-6">
+              <Field label={data.contact.form.name} required>
                 <input name="name" className={inputClass} />
               </Field>
-              <Field label={data.contact.form.email}>
+              <Field label={data.contact.form.email} required>
                 <input type="email" name="email" className={inputClass} />
               </Field>
-              <Field label={data.contact.form.topic}>
-                <select name="topic" className={inputClass}>
-                  {data.contact.form.topics.map((t: string) => (
-                    <option key={t}>{t}</option>
-                  ))}
-                </select>
+              <Field label={data.contact.form.topic} required>
+                <div className="relative">
+                  <select name="topic" className={cn(inputClass, "appearance-none pr-10 rtl:pr-4 rtl:pl-10")}>
+                    <option value="" disabled selected className="text-muted-foreground">Select...</option>
+                    {data.contact.form.topics.map((t: string) => (
+                      <option key={t} value={t}>{t}</option>
+                    ))}
+                  </select>
+                  <ChevronDown className="absolute right-3 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground pointer-events-none rtl:left-3 rtl:right-auto" />
+                </div>
               </Field>
-              <Field label={data.contact.form.message}>
-                <textarea name="message" rows={5} className={`${inputClass} resize-none`} />
+              <Field label={data.contact.form.message} required>
+                <textarea name="message" rows={5} className={cn(inputClass, "resize-none")} />
               </Field>
               <Field label={data.contact.form.accessNeeds}>
                 <input
@@ -80,38 +85,43 @@ export default async function GetInvolved({ params }: Props) {
                   className={inputClass}
                 />
               </Field>
-              <PillButton type="submit" size="lg" className="mt-2 w-fit">
+              <PillButton type="submit" size="lg" className="mt-2 w-full sm:w-fit">
                 {data.contact.form.submit}
               </PillButton>
             </form>
           </Reveal>
-          <Reveal direction="left" delay={120} className="space-y-6">
-            <aside className="space-y-6">
-              <div className="overlay-voice-3 relative overflow-hidden rounded-2xl">
+          <Reveal direction="left" delay={120} className="space-y-8">
+            <aside className="space-y-8">
+              <div className="relative overflow-hidden rounded-2xl bg-secondary-soft">
                 <ArcFigure
                   src={getImage("accessibilityTech")}
                   alt={data.contact.imageAlt}
                   ratio="4/3"
-                  variant="arc"
+                  variant="soft"
+                  className="w-full"
                 />
               </div>
-              <ul className="space-y-4 text-sm">
-                <li className="flex items-start gap-3">
-                  <Mail className="mt-0.5 h-4 w-4 text-voice" />
+              <ul className="space-y-5 text-sm">
+                <li className="flex items-start gap-4">
+                  <div className="mt-0.5 rounded-full bg-secondary-soft p-2 text-voice">
+                    <Mail className="h-4 w-4" />
+                  </div>
                   <div>
-                    <p className="text-muted-foreground">{data.contact.details.emailLabel}</p>
-                    <p className="text-foreground">{site.email}</p>
+                    <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground mb-1">{data.contact.details.emailLabel}</p>
+                    <p className="font-medium text-foreground">{site.email}</p>
                   </div>
                 </li>
-                <li className="flex items-start gap-3">
-                  <MapPin className="mt-0.5 h-4 w-4 text-voice" />
+                <li className="flex items-start gap-4">
+                  <div className="mt-0.5 rounded-full bg-secondary-soft p-2 text-voice">
+                    <MapPin className="h-4 w-4" />
+                  </div>
                   <div>
-                    <p className="text-muted-foreground">{data.contact.details.basedLabel}</p>
-                    <p className="text-foreground">{site.cities}</p>
+                    <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground mb-1">{data.contact.details.basedLabel}</p>
+                    <p className="font-medium text-foreground">{site.cities}</p>
                   </div>
                 </li>
               </ul>
-              <p className="rounded-2xl border border-border bg-surface p-4 text-xs text-muted-foreground">
+              <p className="rounded-2xl border border-border bg-surface p-5 text-sm leading-relaxed text-muted-foreground">
                 {data.contact.note}
               </p>
             </aside>
@@ -122,7 +132,7 @@ export default async function GetInvolved({ params }: Props) {
   );
 }
 
-function Card({
+function EngagementCard({
   icon: Icon,
   title,
   body,
@@ -136,34 +146,41 @@ function Card({
   cta: string;
 }) {
   return (
-    <div className="flex h-full flex-col rounded-3xl border border-border bg-background p-8">
-      <div className="grid h-11 w-11 place-items-center rounded-2xl bg-secondary-soft text-voice">
-        {Icon && <Icon className="h-5 w-5" aria-hidden />}
+    <div className="flex flex-col h-full rounded-3xl border border-border bg-surface p-8 transition-colors hover:border-voice">
+      <div className="grid h-12 w-12 place-items-center rounded-2xl bg-secondary-soft text-voice mb-6">
+        {Icon && <Icon className="h-6 w-6" aria-hidden />}
       </div>
-      <h1 className="mt-5 font-semibold text-2xl">{title}</h1>
-      <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{body}</p>
-      <ul className="mt-6 mb-6 space-y-2 border-t border-border pt-5 text-xs text-muted-foreground">
-        {fields.map((f) => (
-          <li key={f}>· {f}</li>
-        ))}
-      </ul>
-      <PillLink href="" size="xl">
+      <h2 className="font-semibold text-2xl text-foreground mb-3">{title}</h2>
+      <p className="text-sm leading-relaxed text-muted-foreground flex-1">{body}</p>
+      
+      {fields && fields.length > 0 && (
+        <ul className="mt-6 mb-8 space-y-3 border-t border-border/60 pt-6 text-sm text-foreground/80">
+          {fields.map((f) => (
+            <li key={f} className="flex items-start gap-2">
+              <span className="text-voice/60" aria-hidden>—</span> {f}
+            </li>
+          ))}
+        </ul>
+      )}
+      
+      <PillLink href="#contact" variant="outline" className="w-full justify-center">
         {cta}
       </PillLink>
     </div>
   );
 }
 
-function Field({ label, id, children }: { label: string; id?: string; children: React.ReactNode }) {
+function Field({ label, id, required, children }: { label: string; id?: string; required?: boolean; children: React.ReactNode }) {
   const fieldId = id || `field-${label.toLowerCase().replace(/[^a-z0-9]/g, "-")}`;
   return (
     <div className="grid gap-2 text-sm">
-      <label htmlFor={fieldId} className="text-foreground">
-        {label}
+      <label htmlFor={fieldId} className="text-foreground font-medium">
+        {label} {required && <span className="text-voice ml-1 rtl:mr-1 rtl:ml-0" aria-hidden="true">*</span>}
       </label>
       {React.isValidElement(children)
-        ? React.cloneElement(children as React.ReactElement<{ id?: string }>, {
+        ? React.cloneElement(children as React.ReactElement<{ id?: string, required?: boolean }>, {
             id: (children.props as { id?: string }).id || fieldId,
+            required: required ? true : undefined,
           })
         : children}
     </div>

@@ -4,8 +4,9 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { useContent } from "@/hooks/use-content";
+import type { NavItem } from "@/types";
 import { BrandLogo } from "./brand-logo";
-import { AccessibilityTrigger } from "./accessibility-panel";
+import { AccessibilityToggle as AccessibilityTrigger } from "@/components/accessibility";
 import { LanguageSwitcher } from "./shared/language-switcher";
 import { PillLink } from "./shared/pill";
 import { BrandRule } from "./shared/brand";
@@ -32,6 +33,23 @@ export function SiteHeader({ locale }: { locale?: string }) {
     observer.observe(sentinel);
     return () => observer.disconnect();
   }, []);
+
+  // Handle mobile menu side effects
+  useEffect(() => {
+    if (!open) return;
+    const originalStyle = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    
+    return () => {
+      document.body.style.overflow = originalStyle;
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [open]);
 
   return (
     <>
@@ -72,15 +90,18 @@ export function SiteHeader({ locale }: { locale?: string }) {
 
           <nav aria-label={ui.nav.primary} className="hidden lg:block">
             <ul className="flex items-center gap-1">
-              {ui.navigation.map((n) => {
-                const isActive =
-                  pathname.endsWith(n.href) || (n.href === "/" && pathname.length <= 4);
+              {ui.navigation.map((n: NavItem) => {
+                const activePath = `/${locale}${n.href}`;
+                const isActive = n.href === "/" 
+                  ? pathname === `/${locale}` || pathname === `/${locale}/` 
+                  : pathname.startsWith(activePath);
                 return (
                   <li key={n.href}>
                     <Link
                       href={`/${locale}${n.href}`}
-                      className={`arc-underline rounded-full px-3.5 py-2.5 text-sm font-medium text-foreground no-underline transition-colors hover:text-primary-deep ${isActive ? "text-voice" : ""}`}
+                      className={`arc-underline rounded-full px-3.5 py-2.5 text-sm font-medium text-foreground no-underline transition-colors hover:text-primary-deep focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-voice ${isActive ? "text-voice" : ""}`}
                       data-active={isActive ? "true" : undefined}
+                      aria-current={isActive ? "page" : undefined}
                     >
                       {n.label}
                     </Link>
@@ -110,36 +131,57 @@ export function SiteHeader({ locale }: { locale?: string }) {
         </div>
 
         {open && (
-          <div id="mobile-navigation" className="border-t border-border bg-background lg:hidden">
-            <nav aria-label={ui.nav.mobile} className="container-page py-4">
-              <ul className="grid gap-1">
-                {ui.navigation.map((n) => {
-                  const isActive =
-                    pathname.endsWith(n.href) || (n.href === "/" && pathname.length <= 4);
-                  return (
-                    <li key={n.href}>
-                      <Link
-                        href={`/${locale}${n.href}`}
-                        onClick={() => setOpen(false)}
-                        className={`block rounded-[var(--arc-sm)] border-s-2 px-4 py-3.5 text-base font-medium text-foreground no-underline transition-colors hover:border-primary hover:bg-primary-soft/60 ${isActive ? "border-voice bg-secondary-soft text-voice" : "border-transparent"}`}
-                        data-active={isActive ? "true" : undefined}
-                      >
-                        {n.label}
-                      </Link>
-                    </li>
-                  );
-                })}
-                <li className="pt-2">
-                  <PillLink
-                    href={`/${locale}/get-involved`}
-                    onClick={() => setOpen(false)}
-                    className="w-full justify-center px-4 py-3"
-                  >
-                    {ui.actions.getInvolved}
-                  </PillLink>
-                </li>
-              </ul>
-            </nav>
+          <div 
+            className="fixed inset-0 z-[100] lg:hidden"
+            role="dialog"
+            aria-modal="true"
+            aria-label={ui.nav.mobile}
+          >
+            <div className="fixed inset-0 bg-background/80 backdrop-blur-sm" onClick={() => setOpen(false)} aria-hidden="true" />
+            <div className="fixed inset-y-0 ltr:right-0 rtl:left-0 w-full max-w-sm border-s border-border bg-background p-6 shadow-xl animate-in slide-in-from-end duration-300">
+              <div className="flex items-center justify-between mb-8">
+                <span className="text-sm font-semibold text-voice">{site.name}</span>
+                <button
+                  type="button"
+                  aria-label={ui.actions.closeMenu}
+                  onClick={() => setOpen(false)}
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border transition-colors hover:bg-secondary-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-voice"
+                >
+                  <X className="h-5 w-5" />
+                </button>
+              </div>
+              <nav aria-label={ui.nav.mobile}>
+                <ul className="grid gap-2">
+                  {ui.navigation.map((n: NavItem) => {
+                    const activePath = `/${locale}${n.href}`;
+                    const isActive = n.href === "/" 
+                      ? pathname === `/${locale}` || pathname === `/${locale}/` 
+                      : pathname.startsWith(activePath);
+                    return (
+                      <li key={n.href}>
+                        <Link
+                          href={`/${locale}${n.href}`}
+                          onClick={() => setOpen(false)}
+                          className={`block rounded-[var(--arc-sm)] border-s-4 px-4 py-3.5 text-base font-medium text-foreground no-underline transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-voice ${isActive ? "border-voice bg-secondary-soft text-voice" : "border-transparent hover:border-primary hover:bg-primary-soft/60"}`}
+                          aria-current={isActive ? "page" : undefined}
+                        >
+                          {n.label}
+                        </Link>
+                      </li>
+                    );
+                  })}
+                  <li className="pt-4 mt-4 border-t border-border">
+                    <PillLink
+                      href={`/${locale}/get-involved`}
+                      onClick={() => setOpen(false)}
+                      className="w-full justify-center px-4 py-3"
+                    >
+                      {ui.actions.getInvolved}
+                    </PillLink>
+                  </li>
+                </ul>
+              </nav>
+            </div>
           </div>
         )}
       </header>

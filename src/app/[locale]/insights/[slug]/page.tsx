@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation";
 import { SiteLayout, Section, PageHeader } from "@/components/site-layout";
-import { getInsights } from "@/repositories/dataAccess";
+import { getInsights } from "@/lib/repositories";
 import { Reveal } from "@/components/shared";
-import type { Insight } from "@/data/types";
+import type { Insight } from "@/types";
 import { Metadata } from "next";
 
 type Props = {

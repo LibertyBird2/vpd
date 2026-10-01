@@ -17,7 +17,7 @@ import {
   Sparkles,
   type LucideIcon,
 } from "lucide-react";
-import type { IconName } from "@/data/types";
+import type { IconName } from "@/types";
 
 /** Presentation-layer mapping: content references icons by name only. */
 export const icons: Record<IconName, LucideIcon> = {

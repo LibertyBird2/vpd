@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SiteLayout, Section } from "@/components/site-layout";
-import { getEvents } from "@/repositories/dataAccess";
+import { getEvents } from "@/lib/repositories";
 import { PillLink, Reveal } from "@/components/shared";
 import { getLocalizedHref } from "@/lib/utils";
 import { ArrowLeft, Calendar, MapPin, Users } from "lucide-react";

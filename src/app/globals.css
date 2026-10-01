@@ -494,3 +494,29 @@
     margin-inline: auto;
   }
 }
+
+/* --- Accessibility Panel Overrides --- */
+
+/* Text Size */
+html[data-text-size="large"] {
+  font-size: 110%;
+}
+html[data-text-size="largest"] {
+  font-size: 125%;
+}
+
+/* Text Spacing (WCAG 1.4.12) */
+html.text-spacing * {
+  letter-spacing: 0.12em !important;
+  word-spacing: 0.16em !important;
+}
+html.text-spacing p {
+  margin-bottom: 2em !important;
+}
+
+/* Line Spacing */
+html.line-spacing p, 
+html.line-spacing li,
+html.line-spacing span {
+  line-height: 1.8 !important;
+}

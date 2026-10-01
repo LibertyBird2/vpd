@@ -1,5 +1,5 @@
 import { SiteLayout, PageHeader } from "@/components/site-layout";
-import { getInsights } from "@/repositories/dataAccess";
+import { getInsights } from "@/lib/repositories";
 import { Metadata } from "next";
 import { InsightsFilter } from "@/components/insights-filter";
 
@@ -34,6 +34,7 @@ export default async function Insights({ params }: Props) {
         locale={locale}
         featuredLabel={data.featuredLabel}
         readFeaturedLabel={data.readFeaturedLabel}
+        readLabel={data.readLabel}
       />
     </SiteLayout>
   );
